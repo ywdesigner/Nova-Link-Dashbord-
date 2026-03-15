@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #EF4444;
+}
+
+:root {
+  --bg-main: #f8fafc; /* slate-50 */
+  --text-main: #0f172a; /* slate-900 */
+  --border-main: rgba(0, 0, 0, 0.05);
+  --card-bg: #ffffff;
+}
+
+.dark {
+  color-scheme: dark;
+  --bg-main: #000000;
+  --text-main: #ffffff;
+  --border-main: rgba(239, 68, 68, 0.1);
+  --card-bg: #18181b; /* zinc-900 */
+  --glow-red: 0 0 20px rgba(239, 68, 68, 0.4);
+  --glow-red-strong: 0 0 40px rgba(239, 68, 68, 0.6);
+}
+
+@layer base {
+  html {
+    @apply transition-colors duration-500;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    @apply transition-colors duration-500;
+  }
+
+  * {
+    border-color: var(--border-main);
+  }
+}
+
+.glow-effect {
+  box-shadow: var(--glow-red);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-red-500/20 rounded-full hover:bg-red-500/40 transition-colors;
+}
+
+/* RTL Support for Recharts Tooltip */
+[dir="rtl"] .recharts-tooltip-wrapper {
+  direction: rtl;
+}
